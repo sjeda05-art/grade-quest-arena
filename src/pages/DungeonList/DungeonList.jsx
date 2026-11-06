@@ -17,14 +17,7 @@ export default function DungeonList() {
   const closeForm = () => setEditing(null);
 
   return (
-    <Layout
-      title="던전 리스트"
-      right={
-        <S.CreateButton type="button" onClick={() => setEditing("new")} aria-label="던전 생성">
-          <Plus />
-        </S.CreateButton>
-      }
-    >
+    <Layout title="던전 리스트">
       {dungeons.length === 0 ? (
         <S.Empty>
           <S.EmptyTitle>아직 던전이 없어요</S.EmptyTitle>
@@ -39,7 +32,8 @@ export default function DungeonList() {
       ) : (
         <>
           <S.Toolbar>
-            <C.Button type="button" $variant="ghost" onClick={() => setEditing("new")}>
+            <S.Count>던전 {dungeons.length}개</S.Count>
+            <C.Button type="button" onClick={() => setEditing("new")}>
               <Plus /> 던전 생성
             </C.Button>
           </S.Toolbar>

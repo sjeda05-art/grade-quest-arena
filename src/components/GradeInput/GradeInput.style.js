@@ -27,8 +27,8 @@ export const Cell = styled.div`
 `;
 
 export const Grade = styled.span`
-  font-family: var(--font-title);
-  font-size: ${u(5.5)};
+  font-family: var(--font-grade);
+  font-size: ${u(6.5)};
   color: ${({ $grade }) =>
     $grade.startsWith("A") ? "var(--primary-strong)" : $grade.startsWith("B") ? "var(--lavender-strong)" : "var(--muted-foreground)"};
 `;

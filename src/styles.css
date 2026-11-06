@@ -45,6 +45,7 @@
   /* 폰트 */
   --font-title: "Black Han Sans", "Jua", sans-serif;
   --font-ui: "Jua", "Apple SD Gothic Neo", sans-serif;
+  --font-grade: "Do Hyeon", "Jua", sans-serif;
 
   /* 파스텔 팔레트 */
   --background: oklch(0.975 0.018 85);

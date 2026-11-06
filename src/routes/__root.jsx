@@ -71,7 +71,7 @@ export const Route = createRootRouteWithContext()({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&display=swap",
       },
     ],
   }),

@@ -1,18 +1,9 @@
 import styled, { css } from "styled-components";
 import { u } from "../../styles/unit";
 
-export const CreateButton = styled.button`
-  display: grid;
-  place-items: center;
-  width: ${u(10)};
-  height: ${u(10)};
-  border: none;
-  border-radius: ${u(3)};
-  background: var(--gradient-primary);
-  color: var(--primary-foreground);
-  box-shadow: var(--shadow-pop);
-
-  svg { width: ${u(5.5)}; height: ${u(5.5)}; }
+export const Count = styled.span`
+  font-size: ${u(3.8)};
+  color: var(--muted-foreground);
 `;
 
 export const Empty = styled.div`
@@ -44,8 +35,9 @@ export const EmptyText = styled.p`
 
 export const Toolbar = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: ${u(3)};
+  align-items: center;
+  justify-content: space-between;
+  margin: ${u(1)} 0 ${u(3.5)};
 `;
 
 export const List = styled.ul`
@@ -136,8 +128,8 @@ export const Status = styled.div`
   width: ${u(16)};
   height: ${u(16)};
   border-radius: ${u(4)};
-  font-family: var(--font-title);
-  font-size: ${u(5.5)};
+  font-family: var(--font-grade);
+  font-size: ${u(6.5)};
   ${({ $status }) => statusColor[$status]}
 
   small {

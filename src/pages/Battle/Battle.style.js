@@ -471,8 +471,8 @@ export const GradeOption = styled.button`
   border-radius: ${u(3.5)};
   background: var(--background);
   color: var(--ink);
-  font-family: var(--font-title);
-  font-size: ${u(5.5)};
+  font-family: var(--font-grade);
+  font-size: ${u(6.5)};
 
   ${({ $selected, $success }) =>
     $selected &&

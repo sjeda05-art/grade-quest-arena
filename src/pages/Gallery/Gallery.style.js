@@ -145,9 +145,9 @@ export const Grade = styled.strong`
   border-radius: 999px;
   background: ${({ $grade }) => gradeTone($grade)};
   color: var(--ink);
-  font-family: var(--font-title);
+  font-family: var(--font-grade);
   font-weight: 400;
-  font-size: ${u(5.5)};
+  font-size: ${u(6)};
   box-shadow: var(--shadow-soft);
 `;
 
