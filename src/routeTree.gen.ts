@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as DungeonsIndexRouteImport } from './routes/dungeons.index'
+import { Route as DungeonsIdRouteImport } from './routes/dungeons.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DungeonsIndexRoute = DungeonsIndexRouteImport.update({
+  id: '/dungeons/',
+  path: '/dungeons/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DungeonsIdRoute = DungeonsIdRouteImport.update({
+  id: '/dungeons/$id',
+  path: '/dungeons/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/home': typeof HomeRoute
+  '/dungeons/$id': typeof DungeonsIdRoute
+  '/dungeons/': typeof DungeonsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/home': typeof HomeRoute
+  '/dungeons/$id': typeof DungeonsIdRoute
+  '/dungeons': typeof DungeonsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/gallery': typeof GalleryRoute
+  '/home': typeof HomeRoute
+  '/dungeons/$id': typeof DungeonsIdRoute
+  '/dungeons/': typeof DungeonsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/gallery' | '/home' | '/dungeons/$id' | '/dungeons/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/gallery' | '/home' | '/dungeons/$id' | '/dungeons'
+  id: '__root__' | '/' | '/gallery' | '/home' | '/dungeons/$id' | '/dungeons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GalleryRoute: typeof GalleryRoute
+  HomeRoute: typeof HomeRoute
+  DungeonsIdRoute: typeof DungeonsIdRoute
+  DungeonsIndexRoute: typeof DungeonsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,17 +88,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dungeons/': {
+      id: '/dungeons/'
+      path: '/dungeons'
+      fullPath: '/dungeons/'
+      preLoaderRoute: typeof DungeonsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dungeons/$id': {
+      id: '/dungeons/$id'
+      path: '/dungeons/$id'
+      fullPath: '/dungeons/$id'
+      preLoaderRoute: typeof DungeonsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GalleryRoute: GalleryRoute,
+  HomeRoute: HomeRoute,
+  DungeonsIdRoute: DungeonsIdRoute,
+  DungeonsIndexRoute: DungeonsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from './router.tsx'
+import type { getRouter } from './router.jsx'
 import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
