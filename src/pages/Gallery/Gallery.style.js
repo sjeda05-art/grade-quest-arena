@@ -39,29 +39,37 @@ export const EmptySub = styled.p`
 export const SwiperWrap = styled.div`
   position: relative;
   margin: 0 ${u(-4)};
-  padding: ${u(6)} ${u(7)};
-  perspective: ${u(200)};
+  padding: ${u(4)} ${u(8)};
 
   .swiper {
-    overflow: visible;
-    padding: ${u(4)} 0;
+    padding: ${u(10)} 0;
   }
 
   .swiper-slide {
     transition: opacity 0.35s ease, filter 0.35s ease;
-    opacity: 0.45;
-    filter: saturate(0.7);
+    opacity: 0;
   }
 
+  /* 양옆 카드: 비스듬히 + 반투명 */
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    opacity: 0.5;
+    filter: saturate(0.6);
+  }
+
+  /* 가운데 카드: 가장 크게 */
   .swiper-slide-active {
     opacity: 1;
     filter: none;
-    z-index: 2;
+    z-index: 3;
   }
 
-  .swiper-slide-prev,
-  .swiper-slide-next {
-    opacity: 0.6;
+  .swiper-slide > article {
+    transition: transform 0.35s ease;
+  }
+
+  .swiper-slide-active > article {
+    transform: scale(1.32);
   }
 `;
 

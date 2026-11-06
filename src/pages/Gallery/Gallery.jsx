@@ -24,6 +24,14 @@ export default function Gallery() {
         (b.result.score ?? 0) - (a.result.score ?? 0),
     );
 
+  // 3장 이상이면 무한으로 넘길 수 있게, 루프에 필요한 장 수(6장)를 채울 만큼 반복
+  const canLoop = cleared.length >= 3;
+  const slides = canLoop
+    ? Array.from({ length: Math.ceil(6 / cleared.length) }).flatMap((_, copy) =>
+        cleared.map((d, i) => ({ d, rank: i + 1, key: `${d.id}-${copy}` })),
+      )
+    : cleared.map((d, i) => ({ d, rank: i + 1, key: d.id }));
+
   return (
     <Layout title="전시관">
       <S.Intro>
@@ -49,16 +57,17 @@ export default function Gallery() {
             slidesPerView={3}
             centeredSlides
             grabCursor
+            loop={canLoop}
             spaceBetween={0}
             navigation={{ prevEl: ".gallery-prev", nextEl: ".gallery-next" }}
-            coverflowEffect={{ rotate: 38, stretch: 0, depth: 160, modifier: 1, scale: 0.86, slideShadows: false }}
+            coverflowEffect={{ rotate: 42, stretch: 0, depth: 180, modifier: 1, scale: 0.9, slideShadows: false }}
           >
-            {cleared.map((d, i) => {
+            {slides.map(({ d, rank, key }) => {
               const avatar = getProfessorAvatar(d.avatar);
               return (
-                <SwiperSlide key={d.id}>
+                <SwiperSlide key={key}>
                   <S.Card $grade={d.result.grade}>
-                    <S.Rank>#{i + 1}</S.Rank>
+                    <S.Rank>#{rank}</S.Rank>
                     <S.Photo>
                       <img src={avatar.src} alt={`${d.professor} 교수님`} loading="lazy" width={816} height={816} />
                     </S.Photo>

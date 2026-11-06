@@ -373,13 +373,13 @@ export const SkillType = styled.span`
 export const Balls = styled.span`
   display: flex;
   flex-wrap: wrap;
-  gap: ${u(0.9)};
-  min-height: ${u(3.2)};
+  gap: ${u(0.7)};
+  min-height: ${u(2.9)};
 `;
 
 export const Ball = styled.span`
-  width: ${u(3.2)};
-  height: ${u(3.2)};
+  width: ${u(2.9)};
+  height: ${u(2.9)};
   border-radius: 50%;
   border: ${u(0.4)} solid var(--ink);
   background: linear-gradient(180deg, var(--primary-strong) 0 42%, var(--ink) 42% 58%, var(--card) 58% 100%);
