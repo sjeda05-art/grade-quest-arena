@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // styled-components ships CJS as "main"; bundle its ESM build for SSR so the default import works.
+    ssr: { noExternal: ["styled-components"] },
+  },
 });
